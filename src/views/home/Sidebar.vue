@@ -10,6 +10,7 @@
         @close="handleClose"
         background-color="#262e43"
         text-color="#ffffff"
+        router
       >
         <el-menu-item index="1">
           <template slot="title">
@@ -29,10 +30,10 @@
             <span class="sideTitle">课程中心</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="2-1">查询下单</el-menu-item>
-            <el-menu-item index="2-2">批量下单</el-menu-item>
-            <el-menu-item index="2-3">订单列表</el-menu-item>
-            <el-menu-item index="2-4">批量结果</el-menu-item>
+            <el-menu-item index="findOrder">查询下单</el-menu-item>
+            <el-menu-item index="course-order">批量下单</el-menu-item>
+            <el-menu-item index="course-list">订单列表</el-menu-item>
+            <el-menu-item index="course-task">批量结果</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="3">
