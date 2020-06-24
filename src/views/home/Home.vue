@@ -103,11 +103,15 @@
 
 <script>
 import Schart from "vue-schart";
+<<<<<<< HEAD
 import LineChart from "./components/LineChart";
+=======
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
 export default {
   data() {
     return {
       data: "",
+<<<<<<< HEAD
       lineChartData: 
         {
           actualData: [120, 82, 91, 154, 162, 140, 130]
@@ -115,6 +119,21 @@ export default {
       ,
       pagesize: 8,
       currpage: 1,
+=======
+      options2: {
+        type: "line",
+        title: {
+          text: "最近几个月各品类销售趋势图"
+        },
+        labels: ["2020/6/15", "2020/6/16", "2020/6/17", "2020/6/18", "2020/6/19","2020/6/20","2020/6/21"],
+        datasets: [
+          {
+            label: "家电",
+            data: [234, 278, 270, 190, 230,20,60]
+          }
+        ]
+      },
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
       tableData: [
         {
           date: "2016-05-02",
@@ -186,8 +205,12 @@ export default {
     };
   },
   components: {
+<<<<<<< HEAD
     Schart,
     LineChart
+=======
+    Schart
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   },
   mounted() {
     this.getdata();
@@ -205,11 +228,16 @@ export default {
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
+<<<<<<< HEAD
     handleCurrentChange(cpage) {
       this.currpage = cpage;
     },
     handleSizeChange(psize) {
       this.pagesize = psize;
+=======
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
     }
   }
 };

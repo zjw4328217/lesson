@@ -38,7 +38,11 @@ Vue.use(VueRouter)
         path: '/course-order',
         component: () => import('@/views/course/course-order/index'),
         meta: {
+<<<<<<< HEAD
           title: '批量订单'
+=======
+          title: '查询订单'
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
         }
       },
       {
@@ -46,7 +50,11 @@ Vue.use(VueRouter)
         path: '/course-list',
         component: () => import('@/views/course/course-list/index'),
         meta: {
+<<<<<<< HEAD
           title: '订单列表'
+=======
+          title: '查询订单'
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
         }
       },
       {
@@ -54,6 +62,7 @@ Vue.use(VueRouter)
         path: '/course-task',
         component: () => import('@/views/course/course-task/index'),
         meta: {
+<<<<<<< HEAD
           title: '批量结果'
         }
       },
@@ -119,6 +128,9 @@ Vue.use(VueRouter)
         component: () => import('@/views/complaints/complaints-details/index'),
         meta: {
           title: '流水管理'
+=======
+          title: '查询订单'
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
         }
       }
     ]

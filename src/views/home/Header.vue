@@ -18,11 +18,14 @@ export default {
     return {
       title: "系统首页"
     };
+<<<<<<< HEAD
   },
   mounted() {
     // this.title = this.$route
     console.log(this.$router.history.current);
     this.title =this.$router.history.current.meta.title;
+=======
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   }
 };
 </script>
@@ -31,10 +34,15 @@ export default {
 .content-one {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
   height: 60px;
   line-height: 60px;
   align-items: center;
   padding-left: 20px;
+=======
+  height: 70px;
+  align-items: center;;
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
 }
 .left {
   width: 100px;
@@ -45,9 +53,14 @@ export default {
   line-height: 18px;
 }
 .right {
+<<<<<<< HEAD
     margin-right: 38px;
     width: 35px;
     height: 35px;
+=======
+    width: 44px;
+    height: 44px;
+>>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
     img {
         width: 100%;
         margin-right: 5px;
