@@ -7,65 +7,66 @@
       <div class="right">登录</div>
     </div>
     <div class="content">
-      <div class="content-left">
-        <img src="~@/assets/login@2x.png" />
-      </div>
-      <div class="content-right">
-        <div class="title">欢迎登录一课一代</div>
-        <el-form
-          :model="ruleForm"
-          status-icon
-          ref="ruleForm"
-          label-width="100px"
-          class="demo-ruleForm"
-          style="width:400px;margin:0 auto;"
-        >
-          <el-form-item style="height:50px;">
-            <el-input
-              size="large"
-              placeholder="用户名"
-              type="text"
-              v-model="ruleForm.user"
-              autocomplete="off"
-            ></el-input>
-          </el-form-item>
-          <el-form-item style="height:50px;">
-            <el-input
-              type="password"
-              placeholder="密码"
-              v-model="ruleForm.password"
-              autocomplete="off"
-              size="large"
-            ></el-input>
-          </el-form-item>
-          <el-form-item
-            style="display:flex;justify-content:space-between;height:50px;margin-bottom:20px;"
+      <el-col :span="12">
+        <div class="content-left">
+          <img src="~@/assets/login@2x.png" />
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="content-right">
+          <div class="title">欢迎登录一课一代</div>
+          <el-form
+            :model="ruleForm"
+            status-icon
+            ref="ruleForm"
+            label-width="100px"
+            class="demo-ruleForm"
+            style="width:500px;"
           >
-            <el-input
-              style="width:63%;"
-              placeholder="验证码"
-              size="large"
-              v-model.number="ruleForm.code"
-            ></el-input>
-            <el-image
-              @click="getImg"
-              style="width: 100px;height:25px;margin:0;margin-left:10px;padding-top:10px;overflow:visible;"
-              :src="url"
-              fit="contain"
-            ></el-image>
-            <!-- <div @click="getImg"><img :src="url.url" alt=""></div> -->
-          </el-form-item>
-          <el-form-item style="margin-top:20px;">
-            <el-button type="primary" @click="submitForm" style="height:50px;width:300px;">登录</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
+            <el-form-item style="height:50px;">
+              <el-input
+                size="large"
+                placeholder="用户名"
+                type="text"
+                v-model="ruleForm.user"
+                autocomplete="off"
+              ></el-input>
+            </el-form-item>
+            <el-form-item style="height:50px;">
+              <el-input
+                type="password"
+                placeholder="密码"
+                v-model="ruleForm.password"
+                autocomplete="off"
+                size="large"
+              ></el-input>
+            </el-form-item>
+            <el-form-item inline="true">
+              <el-input
+                style="width:75%;"
+                placeholder="验证码"
+                size="large"
+                v-model.number="ruleForm.code"
+              ></el-input>
+              <el-image
+                @click="getImg"
+                style="height:25px;margin:0;margin-left:10px;padding-top:10px;overflow:visible;"
+                :src="url"
+                fit="contain"
+              ></el-image>
+            </el-form-item>
+            <el-form-item style="margin-top:20px;">
+              <el-button type="primary" @click="submitForm" style="height:50px;width:300px;">登录</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-col>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 export default {
   name: "login",
   data() {
@@ -82,16 +83,16 @@ export default {
     this.getImg();
     console.log(document.cookie);
   },
-//   watch: {
-//       url:{
-//           handler(newVal, oldVal){
-//               this.url = newVal
-//             console.log(newVal);
-            
-//         },
-//         deep:true
-//       }
-//   },
+  //   watch: {
+  //       url:{
+  //           handler(newVal, oldVal){
+  //               this.url = newVal
+  //             console.log(newVal);
+
+  //         },
+  //         deep:true
+  //       }
+  //   },
   methods: {
     submitForm() {
       if (!this.ruleForm.user) {
@@ -121,8 +122,8 @@ export default {
         data: this.transformRequest(str)
       }).then(res => {
         console.log(res);
-        if(res.data.code == '200'){
-            this.$router.push('/index')
+        if (res.data.code == "200") {
+          this.$router.push("/home");
         }
       });
     },
@@ -131,7 +132,7 @@ export default {
         method: "get",
         url: "/api/code/download"
       }).then(res => {
-          this.url = ''
+        this.url = "";
         console.log(res);
         this.url = `/api/code/download?${res.data}`;
       });
@@ -181,7 +182,7 @@ h1 {
 .content {
   display: flex;
   height: 616px;
-  padding-top: 103px;
+  padding-top: 53px;
   padding-left: 419px;
 }
 .content-left {
@@ -212,5 +213,8 @@ h1 {
     margin: 0 auto;
     margin-bottom: 40px;
   }
+}
+.el-form-item__content {
+  margin: 0;
 }
 </style>
