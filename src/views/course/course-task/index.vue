@@ -29,8 +29,7 @@
       <el-pagination
         class="bottom"
         background
-        layout="prev, pager, next, sizes, total, jumper"
-        :page-sizes="[5, 10, 15, 20]"
+        layout="prev, pager, next, total"
         :page-size="pagesize"
         :total="tableData.length"
         @current-change="handleCurrentChange"

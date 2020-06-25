@@ -2,7 +2,7 @@
   <div>
     <el-row :gutter="30">
       <el-col :span="12">
-        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:800px">
+        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:700px">
           <div class="title">请填写《超星/尔雅/学习通》下单信息</div>
           <div class="content">
             <ul>
@@ -42,11 +42,11 @@
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:800px">
+        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:700px">
           <div class="title">
             <span>课程信息</span>
           </div>
-          <div class="content">
+          <div class="content mytree">
             <el-tree
               :data="data"
               show-checkbox
@@ -183,7 +183,7 @@ export default {
 }
 .content {
   margin: 30px;
-  padding: 30px;
+  // padding: 30px;
   height: 510px;
   box-sizing: border-box;
   border: 1px solid #ebeef5;
@@ -214,8 +214,9 @@ export default {
   margin-bottom: 30px;
 }
 .bottomRight {
+  border-top: 1px solid #EBEEF5;
   box-sizing: border-box;
-  padding: 15px 30px;
+  padding: 30px 30px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -233,4 +234,74 @@ export default {
 .four {
   color: #9b9b9b;
 }
+.mytree {
+  border: 0;
+  padding: 0;
+  height: 510px;
+  margin-bottom: 0;
+}
+</style>
+<style lang="scss" scoped>
+::v-deep  .mytree {
+    //  .el-tree > .el-tree-node:after {
+    //   border-top: none;
+    // }
+    .el-tree-node {
+      position: relative;
+      padding-left: 16px;
+    }
+    //节点有间隙，隐藏掉展开按钮就好了,如果觉得空隙没事可以删掉
+    .el-tree-node__expand-icon.is-leaf{
+      display: none;
+    }
+    .el-tree-node__children {
+      padding-left: 16px;
+    }
+ 
+    .el-tree-node :last-child:before {
+      height: 0px;
+    }
+ 
+    .el-tree > .el-tree-node:before {
+      border-left: none;
+    }
+ 
+    .el-tree > .el-tree-node:after {
+      border-top: none;
+    }
+ 
+    .el-tree-node:before {
+      content: "";
+      left: 32px;
+      position: absolute;
+      right: auto;
+      border-width: 1px;
+    }
+ 
+    .el-tree-node:after {
+      content: "";
+      left: 32px;
+      position: absolute;
+      right: auto;
+      border-width: 1px;
+    }
+ 
+    .el-tree-node:before {
+      border-left: 1px solid #DCDCDC;
+      bottom: 0px;
+      height: 100%;
+      top: 12px;
+      width: 1px;
+      // left: 10px;
+    }
+ 
+    .el-tree-node:after {
+      border-top: 1px solid #DCDCDC;
+      height: 0px;
+      top: 12px;
+      width: 10px;
+      // left: 10px;
+    }
+  }
+
 </style>

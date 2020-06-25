@@ -2,8 +2,9 @@
   <div class="content-one">
     <!-- <div class="left">{{title}}</div> -->
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>{{title}}</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
+      <!-- <el-breadcrumb-item >{{titleParent}}</el-breadcrumb-item> -->
+      <el-breadcrumb-item class="title-light">{{title}}</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="right">
       <img src="~@/assets/logo.png" />
@@ -16,16 +17,14 @@
 export default {
   data() {
     return {
-      title: "系统首页"
+      title: "系统首页",
+      titleParent:''
     };
-<<<<<<< HEAD
   },
   mounted() {
     // this.title = this.$route
     console.log(this.$router.history.current);
     this.title =this.$router.history.current.meta.title;
-=======
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   }
 };
 </script>
@@ -34,15 +33,10 @@ export default {
 .content-one {
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
   height: 60px;
   line-height: 60px;
   align-items: center;
   padding-left: 20px;
-=======
-  height: 70px;
-  align-items: center;;
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
 }
 .left {
   width: 100px;
@@ -53,14 +47,9 @@ export default {
   line-height: 18px;
 }
 .right {
-<<<<<<< HEAD
     margin-right: 38px;
     width: 35px;
     height: 35px;
-=======
-    width: 44px;
-    height: 44px;
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
     img {
         width: 100%;
         margin-right: 5px;
@@ -73,5 +62,10 @@ export default {
         border-left: 5px transparent solid;;
         border-bottom: 5px transparent solid;;
     }
+}
+::v-deep .title-light {
+  .el-breadcrumb__inner {
+    color:#257AF6;
+  }
 }
 </style>

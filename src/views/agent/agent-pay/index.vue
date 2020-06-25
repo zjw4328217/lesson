@@ -13,12 +13,12 @@
               <el-option label="订单号" value="2"></el-option>
               <el-option label="用户电话" value="3"></el-option>
             </el-select>
-            <el-button slot="append" icon="el-icon-search">搜索</el-button>
           </el-input>
+            <el-button type="primary" style="width:100px;font-size:16px;" icon="el-icon-search">搜索</el-button>
         </div>
         <el-card
           shadow="hover"
-          :body-style="{padding: '0px'}"
+          :body-style="{padding: '30px'}"
           style="height:750px;position:relative;"
         >
           <el-table
@@ -26,16 +26,16 @@
             style="width: 100%;"
           >
             <el-table-column prop="id" label="id" width="60"></el-table-column>
-            <el-table-column prop="user" width="90" label="客户账号"></el-table-column>
-            <el-table-column prop="tel" label="客户手机号" width="100"></el-table-column>
-            <el-table-column prop="indety" width="80" label="客户身份"></el-table-column>
-            <el-table-column prop="orderNum" width="140" label="订单号"></el-table-column>
-            <el-table-column label="充值金额" width="100">
+            <el-table-column prop="user"  label="客户账号"></el-table-column>
+            <el-table-column prop="tel" label="客户手机号" ></el-table-column>
+            <el-table-column prop="indety"  label="客户身份"></el-table-column>
+            <el-table-column prop="orderNum"  label="订单号"></el-table-column>
+            <el-table-column label="充值金额" >
               <template slot-scope="scope">
                 <div>￥ {{ scope.row.payAccount }}</div>
               </template>
             </el-table-column>
-            <el-table-column label="赠送金额" width="100">
+            <el-table-column label="赠送金额" >
               <template slot-scope="scope">
                 <div>￥ {{ scope.row.freeAccount }}</div>
               </template>
@@ -48,7 +48,7 @@
                 <div style="color:#9B9B9B" v-show="scope.row.status == 3">取消付款</div>
               </template>
             </el-table-column>
-            <el-table-column>
+            <el-table-column width="300">
               <template slot="header">
                 <div style="display:flex;justify-content:space-between;">
                   <div>操作</div>
@@ -80,7 +80,7 @@
           <el-pagination
             class="bottom"
             background
-            layout="prev, pager, next, sizes, total, jumper"
+            layout="prev, pager, next, total"
             :page-sizes="[5, 10]"
             :page-size="pagesize"
             :total="tableData.length"
@@ -126,7 +126,7 @@ export default {
       radio: "1", //不赠送
       searchValue: "", //搜索内容
       select: "", //选择内容
-      pagesize: 10,
+      pagesize: 9,
       currpage: 1,
       precent: '',
       input:'', //弹窗输入金额
@@ -342,6 +342,7 @@ export default {
 .search {
   margin-top: 30px;
   margin-bottom: 30px;
+  display: flex;
   ::v-deep .el-input__inner {
     height: 50px;
   }
@@ -358,7 +359,7 @@ export default {
   color: rgba(37, 122, 246, 1);
   border-radius: 4px;
   border: 1px solid rgba(37, 122, 246, 1);
-  margin-right: 30px;
+  // margin-right: 30px;
   text-align: center;
   padding-right: 5px;
 }

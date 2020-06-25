@@ -4,12 +4,12 @@
       <el-col :span="24">
         <div class="search">
           <el-input placeholder="账号/昵称/手机号" v-model="searchValue" class="input-with-select">
-            <el-button slot="append" icon="el-icon-search">搜索</el-button>
           </el-input>
+            <el-button style="width:100px;" type="primary" icon="el-icon-search">搜索</el-button>
         </div>
         <el-card
           shadow="hover"
-          :body-style="{padding: '0px'}"
+          :body-style="{padding: '30px'}"
           style="height:750px;position:relative;"
         >
           <el-table
@@ -17,32 +17,32 @@
             style="width: 100%;"
           >
             <el-table-column prop="orderNum" width="90" label="账号"></el-table-column>
-            <el-table-column width="80" label="代理级别">
+            <el-table-column label="代理级别">
               <template slot-scope="scope">
                 <div style="color:#257AF6;">{{ scope.row.indety }}</div>
               </template>
             </el-table-column>
-            <el-table-column prop="user" width="100" label="昵称"></el-table-column>
+            <el-table-column prop="user" label="昵称"></el-table-column>
             <el-table-column prop="tel" label="手机号" width="100"></el-table-column>
-            <el-table-column label="qq" width="100">
+            <el-table-column label="qq">
               <template slot-scope="scope">
                 <div>{{ scope.row.payAccount }}</div>
               </template>
             </el-table-column>
-            <el-table-column label="可用余额" width="100">
+            <el-table-column label="可用余额">
               <template slot-scope="scope">
                 <div>{{ scope.row.freeAccount }}</div>
               </template>
             </el-table-column>
             <el-table-column prop="beginDate" label="加入时间" width="140"></el-table-column>
             <el-table-column prop="endDate" label="最后操作时间" width="140"></el-table-column>
-            <el-table-column label="状态" width="80">
+            <el-table-column label="状态">
               <template slot-scope="scope">
                 <div style="color:#36A247" v-show="scope.row.status == 1">正常</div>
                 <div style="color:#F5A623" v-show="scope.row.status == 2">冻结</div>
               </template>
             </el-table-column>
-            <el-table-column>
+            <el-table-column width="260">
               <template slot="header">
                 <div style="display:flex;justify-content:space-between;">
                   <div>操作</div>
@@ -74,7 +74,7 @@
           <el-pagination
             class="bottom"
             background
-            layout="prev, pager, next, sizes, total, jumper"
+            layout="prev, pager, next, total"
             :page-sizes="[5, 10]"
             :page-size="pagesize"
             :total="tableData.length"
@@ -87,7 +87,7 @@
     <el-dialog
       :title="data.title"
       :visible.sync="dialogVisible"
-      width="37%"
+      width="33%"
       top='2vh'
       style="margin-top:0;"
       :before-close="handleClose"
@@ -474,6 +474,7 @@ export default {
 .search {
   margin-top: 30px;
   margin-bottom: 30px;
+  display: flex;
   ::v-deep .el-input__inner {
     height: 50px;
   }

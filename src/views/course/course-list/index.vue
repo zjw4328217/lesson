@@ -4,7 +4,7 @@
       <el-col :span="24">
         <div class="top">
           <el-input v-model="input" placeholder="订单号/课程名称/账号信息"></el-input>
-          <el-button type="primary" style="height:50px;lien-height:50px;padding:0 10px;">
+          <el-button type="primary" style="width:100px;height:50px;lien-height:50px;padding:0 10px;">
             <span class="img">
               <img src="~@/assets/search@2x.png" alt />
             </span>
@@ -25,7 +25,8 @@
               <template slot-scope="scope">
                 <el-table
                   :data="scope.row.children"
-                  style="width: calc(100% - 47px)"
+                  style="width: calc(100% - 47px);"
+                  :header-cell-style="{background:'rgba(247,250,255,1)'}"
                   class="two-list"
                 >
                   <el-table-column prop="lessonName" label="课程名称"></el-table-column>
@@ -39,7 +40,7 @@
 
                   <el-table-column prop="editOne" label="操作">
                     <template slot-scope="scope">
-                      <el-button size="mini" @click="handleEditOne(scope.$index, scope.row)">进度跟踪</el-button>
+                      <el-button size="mini" style="border:1px solid rgba(37,122,246,1);color:#257AF6;border-radius:15px;height:30px;" @click="handleEditOne(scope.$index, scope.row)">进度跟踪</el-button>
                     </template>
                   </el-table-column>
                 </el-table>
@@ -60,7 +61,7 @@
             </el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button type="primary" @click="handleEdit(scope.$index, scope.row)">一键冲刷</el-button>
+                <el-button style="border-radius:15px;" type="primary" @click="handleEdit(scope.$index, scope.row)">一键冲刷</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -69,6 +70,7 @@
             :visible.sync="dialogVisible"
             width="30%"
             :before-close="handleClose"
+            custom-class='dialog-one'
           >
             <el-timeline>
               <el-timeline-item
@@ -78,7 +80,10 @@
                 :type="activity.type"
                 :color="activity.color"
                 :size="activity.size"
-              >{{activity.timestamp}}&nbsp;{{activity.content}}</el-timeline-item>
+              >
+              <div v-if="index >= 1">{{activity.timestamp}}&nbsp;{{activity.content}}</div>
+              <div v-else style="color:#36A247;">{{activity.timestamp}}&nbsp;{{activity.content}}</div>
+              </el-timeline-item>
             </el-timeline>
           </el-dialog>
         </div>
@@ -113,13 +118,95 @@ export default {
               count: "90"
             }
           ]
+        },
+        {
+          lesson: "超星/尔雅/学习通，2号",
+          school: "洛阳理工学院",
+          user: "18438623738",
+          password: "19981208wp",
+          money: "20",
+          mark: "无",
+          beginDate: "2020-06-08 14:26:27",
+          endDate: "2020-06-08 14:26:27",
+          status: "任务完成",
+          children: [
+            {
+              lessonName: "东方电影",
+              type: "ALL",
+              finishLevel: "2",
+              taskBegin: "2020-06-08 14:26:27",
+              taskEnd: "2020-06-08 14:26:27",
+              count: "90"
+            }
+          ]
+        },
+        {
+          lesson: "超星/尔雅/学习通，2号",
+          school: "洛阳理工学院",
+          user: "18438623738",
+          password: "19981208wp",
+          money: "20",
+          mark: "无",
+          beginDate: "2020-06-08 14:26:27",
+          endDate: "2020-06-08 14:26:27",
+          status: "任务完成",
+          children: [
+            {
+              lessonName: "东方电影",
+              type: "ALL",
+              finishLevel: "2",
+              taskBegin: "2020-06-08 14:26:27",
+              taskEnd: "2020-06-08 14:26:27",
+              count: "90"
+            }
+          ]
+        },
+        {
+          lesson: "超星/尔雅/学习通，2号",
+          school: "洛阳理工学院",
+          user: "18438623738",
+          password: "19981208wp",
+          money: "20",
+          mark: "无",
+          beginDate: "2020-06-08 14:26:27",
+          endDate: "2020-06-08 14:26:27",
+          status: "任务完成",
+          children: [
+            {
+              lessonName: "东方电影",
+              type: "ALL",
+              finishLevel: "2",
+              taskBegin: "2020-06-08 14:26:27",
+              taskEnd: "2020-06-08 14:26:27",
+              count: "90"
+            }
+          ]
         }
       ],
+      input:'',
       activities: [
         {
           content: "订单完成",
           timestamp: "2018-04-03 20:46",
-          color: "#0bbd87"
+          color: "#36A247"
+        },
+        {
+          content: "正在代做",
+          timestamp: "2018-04-03 20:46",
+          size: "large"
+        },
+        {
+          content: "账号登陆成功",
+          timestamp: "2018-04-03 20:46"
+        },
+        {
+          content: "正在代做",
+          timestamp: "2018-04-03 20:46",
+          size: "large"
+        },
+        {
+          content: "账号登陆成功",
+          timestamp: "2018-04-03 20:46"
         },
         {
           content: "正在代做",
@@ -139,7 +226,14 @@ export default {
     },
     handleEditOne(index, row) {
       this.dialogVisible = true;
-    }
+    },
+     handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      }
   }
 };
 </script>
@@ -170,5 +264,13 @@ export default {
 }
 ::v-deep .el-input__inner {
   height: 50px;
+}
+::v-deep .dialog-one {
+  .el-dialog__body{
+    margin-right: 20px;
+    padding-bottom: 20px;
+  height: 200px!important;
+  overflow-x: hidden;
+  }
 }
 </style>

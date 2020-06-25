@@ -1,5 +1,5 @@
 <template>
-  <div style="height:auto;">
+  <div>
     <div class="logo">
       <img src="~@/assets/logo@2x.png" alt />
     </div>
@@ -11,6 +11,7 @@
         text-color="#ffffff"
         router
         style="border:0;"
+        :default-active='index'
       >
         <el-menu-item index="home">
           <template slot="title">
@@ -42,15 +43,9 @@
             <span class="sideTitle">代理管理</span>
           </template>
           <el-menu-item-group>
-<<<<<<< HEAD
             <el-menu-item index="agent-add">新增代理</el-menu-item>
             <el-menu-item index="agent-list">我的代理</el-menu-item>
             <el-menu-item index="agent-pay">充值处理</el-menu-item>
-=======
-            <el-menu-item index="3-1">新增代理</el-menu-item>
-            <el-menu-item index="3-2">我的代理</el-menu-item>
-            <el-menu-item index="3-3">充值处理</el-menu-item>
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
           </el-menu-item-group>
         </el-submenu>
         <el-submenu index="4">
@@ -59,19 +54,11 @@
             <span slot="title">流水管理</span>
           </template>
           <el-menu-item-group>
-<<<<<<< HEAD
             <el-menu-item index="user-pay">订单付款</el-menu-item>
             <el-menu-item index="user-flow">财务流水</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
         <el-menu-item index="complaints-add">
-=======
-            <el-menu-item index="4-1">订单付款</el-menu-item>
-            <el-menu-item index="4-2">财务流水</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-menu-item index="5">
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
           <template slot="title">
             <img class="iconImg" src="~@/assets/fill@2x.png" alt />
             <span slot="title">发起工单</span>
@@ -84,21 +71,20 @@
           </template>
         </el-menu-item>
       </el-menu>
-<<<<<<< HEAD
-=======
-    </el-col>
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      index: 1
+    };
   },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
+      this.index=keyPath[0];
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
@@ -108,28 +94,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-<<<<<<< HEAD
 .logo {
-=======
-h2 {
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   width: 248px;
   height: 100px;
   padding-top: 30px;
   padding-left: 45px;
   box-sizing: border-box;
-<<<<<<< HEAD
   margin: 0;
-=======
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   img {
     width: 160px;
     height: 37px;
     margin: 0 auto;
-<<<<<<< HEAD
     border: 0;
-=======
->>>>>>> 5760e282aee17ed47ce777b64a2b3462f0d5848d
   }
 }
 .iconImg {
@@ -145,4 +121,5 @@ h2 {
   color: rgba(255, 255, 255, 1);
   line-height: 14px;
 }
+// ::v-deep .el-menu-vertical-demo 
 </style>

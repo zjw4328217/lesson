@@ -2,37 +2,37 @@
   <div>
     <div class="search">
       <el-input placeholder="订单号/课程名称/账号信息" v-model="searchValue" class="input-with-select">
-        <el-button slot="append" icon="el-icon-search">搜索</el-button>
       </el-input>
+        <el-button type="primary" icon="el-icon-search" style="background:#257AF6;width:100px;font-size:16px;">搜索</el-button>
     </div>
     <div class="content">
       <el-table
         :data="tableData.slice((currpage - 1) * pagesize, currpage * pagesize)"
         style="width: 100%"
-        :row-style="{height:'60px'}"
       >
-        <el-table-column prop="order" label="订单号" width="250"></el-table-column>
-        <el-table-column prop="mark" label="课程名称" width="230"></el-table-column>
+        <!-- :row-style="{height:'60px'}" -->
+        <el-table-column prop="order" label="订单号"></el-table-column>
+        <el-table-column prop="mark" label="课程名称"></el-table-column>
 
-        <el-table-column prop="before" label="单价" width="150">
+        <el-table-column prop="before" label="单价" >
           <template slot-scope="scope">
             <div style="color:#257AF6">￥{{ scope.row.before }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="edit" label="订单金额" width="150">
+        <el-table-column prop="edit" label="订单金额" >
           <template slot-scope="scope">
             <div style="color:#257AF6">￥{{ scope.row.edit }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="time" label="操作时间"></el-table-column>
-        <el-table-column width="150" label="状态">
+        <el-table-column prop="time" label="操作时间" ></el-table-column>
+        <el-table-column  label="状态">
           <template slot-scope="scope">
             <div style="color:#36A247;">{{ scope.row.type }}</div>
           </template>
         </el-table-column>
       </el-table>
       <div class="bottom">
-        <div>
+        <div class="bottom-left">
           <el-pagination
             background
             layout="prev, pager, next, total"
@@ -41,7 +41,7 @@
             @size-change="handleSizeChange"
           ></el-pagination>
         </div>
-        <div>
+        <div class="bottom-right">
           <span >合计：￥80</span>
           <el-button style="margin-left:20px;" type="primary">批量付款</el-button>
         </div>
@@ -417,6 +417,7 @@ export default {
 .search {
   margin-top: 30px;
   margin-bottom: 30px;
+  display: flex;
   ::v-deep .el-input__inner {
     height: 50px;
   }
@@ -444,14 +445,15 @@ export default {
   background: #fff;
   position: relative;
   height: 680px;
-  .bottom {
-      width: 1100px;
+  .bottom-left {
     position: absolute;
     left: 30px;
     bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  }
+  .bottom-right {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
   }
 }
 </style>

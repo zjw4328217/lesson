@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position:relative;">
     <el-row type="flex" justify>
       <el-col :span="24">
         <div class="search">
@@ -205,16 +205,16 @@
             :data="tableData.slice((currpage - 1) * pagesize, currpage * pagesize)"
             style="width: 100%;"
           >
-            <el-table-column prop="indety" width="80" label="令牌类型"></el-table-column>
-            <el-table-column prop="tel" label="注册令牌" width="150"></el-table-column>
+            <el-table-column prop="indety"  label="令牌类型"></el-table-column>
+            <el-table-column prop="tel" label="注册令牌"></el-table-column>
             <el-table-column prop="status" label="状态" width="600">
               <template slot-scope="scope">
                 <div>
                   <!-- {{ scope.row }} -->
                   <el-steps align-center 
-                  style="font-size:10px;"
+                  
                   :active="scope.row.status" finish-status="success">
-                    <el-step title="提交成功"></el-step>
+                    <el-step style="font-size:10px;"  title="提交成功"></el-step>
                     <el-step title="系统确认成功"></el-step>
                     <el-step title="支付成功"></el-step>
                     <el-step v-show="scope.row.status < 4 " title="等待注册"></el-step>
@@ -223,15 +223,9 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column>
+            <el-table-column width="300">
               <template slot="header">
-                <div style="display:flex;justify-content:space-between;">
                   <div>操作</div>
-                  <button class="addImg">
-                    <i class="el-icon-plus el-icon--right"></i>
-                    收款码配置
-                  </button>
-                </div>
               </template>
               <template slot-scope="scope">
                 <div style="display:flex;" v-show="scope.row.status < 5">
@@ -261,6 +255,10 @@
           @current-change="handleCurrentChange"
         ></el-pagination>
       </el-col>
+      <span class="first squl"></span>
+      <span class="second squl"></span>
+      <span class="third squl"></span>
+      <span class="four squl"></span>
     </el-row>
   </div>
 </template>
@@ -492,6 +490,7 @@ p {
   line-height: 50px;
   font-size: 16px;
   font-family: MicrosoftYaHei;
+  padding-left: 20px;
   color: rgba(51, 51, 51, 1);
 }
 .search {
@@ -559,5 +558,26 @@ p {
       }
     }
   }
+}
+.squl {
+  display: block;
+  width: 3px;
+  height: 18px;
+  position: absolute;
+  left: 0px;
+  background: #257af6;
+}
+.first {
+  top: 18px;
+}
+.second {
+  top: 117px;
+}
+.third {
+  top: 308px;
+}
+.four {
+  top: 798px;
+
 }
 </style>

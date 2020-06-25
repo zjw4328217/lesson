@@ -3,26 +3,29 @@
     <h3>
       <img src="~@/assets/warning-circle@2x.png" alt />
       <span>{{warning}}</span>
-      <span style="color:#257AF6;" v-show="form.type == 4 || form.type ==3">下单格式：学校 账号 密码 教材（批量下单时需要填写教材，查询下单不用） 用1个空格隔开</span>
+      <span
+        style="color:#257AF6;"
+        v-show="form.type == 4 || form.type ==3"
+      >下单格式：学校 账号 密码 教材（批量下单时需要填写教材，查询下单不用） 用1个空格隔开</span>
       <!-- <span style="color:#257AF6;" v-show="form.type == 3">下单格式：学校 账号 密码 教材（批量下单时需要填写教材，查询下单不用） 用1个空格隔开</span> -->
     </h3>
     <el-col :span="24">
       <div class="select">
-
-      
-      <el-select
-        @change="selectOne"
-        style="width:100%;margin-bottom:30px;"
-        v-model="form.type"
-        placeholder="请下拉选择课程"
-      >
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        ></el-option>
-      </el-select>
+        <el-select
+          @change="selectOne"
+          style="width:100%;margin-bottom:30px;"
+          v-model="form.type"
+          placeholder="请下拉选择课程"
+          popper-class="select-down"
+          :popper-append-to-body="false"
+        >
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
       </div>
     </el-col>
     <div class="main" v-if="form.type == 0">
@@ -31,9 +34,9 @@
           <el-card
             shadow="hover"
             :body-style="{padding: '0px'}"
-            style="height:800px;position:relative;"
+            style="height:700px;position:relative;"
           >
-            <div class="title" v-for="item in options" :key="item.value">{{item.label}}</div>
+            <div class="title"></div>
             <div class="bottom">
               <el-switch
                 v-model="form.type"
@@ -51,7 +54,7 @@
           <el-card
             shadow="hover"
             :body-style="{padding: '0px'}"
-            style="height:800px;position:relative;"
+            style="height:700px;position:relative;"
           >
             <h4>课程信息</h4>
             <div class="bottom">
@@ -128,8 +131,7 @@ export default {
             "代跑时间开始前半小时退出登录，自由跑支持任何位置，室内锻炼无论多少步都只需要下单1KM，绝对匹配规则。";
           break;
         case "3":
-          this.warning =
-            "平时分会每天做半小时慢慢刷，截止前48小时会全部做完。";
+          this.warning = "平时分会每天做半小时慢慢刷，截止前48小时会全部做完。";
           break;
         case "4":
           this.warning =
@@ -202,5 +204,10 @@ h4 {
 
 ::v-deep .select .el-input__inner {
   height: 50px;
+}
+::v-deep .select {
+  .select-down {
+    min-width: 611px !important;
+  }
 }
 </style>

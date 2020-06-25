@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-        <el-aside width="250px" style="background:#262e43;height:100vh;">
+        <el-aside width="250px" style="background:#262e43;min-height:100vh;">
             <v-sidebar></v-sidebar>
         </el-aside>
         <el-container>

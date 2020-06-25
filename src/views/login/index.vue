@@ -7,12 +7,12 @@
       <div class="right">登录</div>
     </div>
     <div class="content">
-      <el-col :span="12">
+      <el-col :xs="24" :md="24" lg="12">
         <div class="content-left">
           <img src="~@/assets/login@2x.png" />
         </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :xs="24" :md="24" lg="12">
         <div class="content-right">
           <div class="title">欢迎登录一课一代</div>
           <el-form
@@ -56,7 +56,7 @@
               ></el-image>
             </el-form-item>
             <el-form-item style="margin-top:20px;">
-              <el-button type="primary" @click="submitForm" style="height:50px;width:300px;">登录</el-button>
+              <el-button type="primary" @click="submitForm" style="height:50px;width:100%;">登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -153,10 +153,11 @@ export default {
 <style lang="scss" scoped>
 .top {
   display: flex;
-  width: 1920px;
+  // width: 1920px;
+  width: 100%;
   height: 100px;
   background: rgba(38, 46, 67, 1);
-  padding-left: 360px;
+  padding-left: 160px;
   padding-top: 27px;
 }
 h1 {
@@ -180,10 +181,12 @@ h1 {
   border-left: 1px solid rgba(255, 255, 255, 1);
 }
 .content {
+  width: 1236px;
+  margin: 0 auto;
   display: flex;
   height: 616px;
   padding-top: 53px;
-  padding-left: 419px;
+  // padding-left: 100px;
 }
 .content-left {
   width: 600px;
