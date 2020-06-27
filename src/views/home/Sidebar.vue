@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="logo">
+    <div class="logo" v-show="!isCollapse">
       <img src="~@/assets/logo@2x.png" alt />
     </div>
       <el-menu
@@ -10,22 +10,18 @@
         background-color="#262e43"
         text-color="#ffffff"
         router
+        :unique-opened='true'
         style="border:0;"
         :default-active='index'
+        :collapse="isCollapse"
       >
         <el-menu-item index="home">
-          <template slot="title">
-            <!-- <i class="el-icon-location"></i> -->
+          <!-- <template slot="title"> -->
             <img class="iconImg" src="~@/assets/index@2x.png" alt />
-            <span slot="title">系统首页</span>
-          </template>
-          <!-- <el-menu-item-group>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-            <el-menu-item index="1-3">代理管理</el-menu-item>
-          </el-menu-item-group>-->
+            <span class="sideTitle" slot="title">系统首页</span>
+          <!-- </template> -->
         </el-menu-item>
-        <el-submenu index="2">
+        <el-submenu index="course">
           <template slot="title">
             <img class="iconImg" src="~@/assets/findlesson@2x.png" alt />
             <span class="sideTitle">课程中心</span>
@@ -37,7 +33,7 @@
             <el-menu-item index="course-task">批量结果</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="3">
+        <el-submenu index="agent">
           <template slot="title">
             <img class="iconImg" src="~@/assets/manage@2x.png" alt />
             <span class="sideTitle">代理管理</span>
@@ -48,7 +44,7 @@
             <el-menu-item index="agent-pay">充值处理</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="4">
+        <el-submenu index="flow">
           <template slot="title">
             <img class="iconImg" src="~@/assets/trade.png" alt />
             <span slot="title">流水管理</span>
@@ -59,27 +55,36 @@
           </el-menu-item-group>
         </el-submenu>
         <el-menu-item index="complaints-add">
-          <template slot="title">
+          <!-- <template slot="title"> -->
             <img class="iconImg" src="~@/assets/fill@2x.png" alt />
             <span slot="title">发起工单</span>
-          </template>
+          <!-- </template> -->
         </el-menu-item>
-        <el-menu-item index="6">
-          <template slot="title">
+        <el-menu-item index="help">
+          <!-- <template> -->
             <img class="iconImg" src="~@/assets/help@2x.png" alt />
             <span slot="title">使用帮助</span>
-          </template>
+          <!-- </template> -->
         </el-menu-item>
       </el-menu>
   </div>
 </template>
 
 <script>
+import { mapGetters} from 'vuex';
 export default {
   data() {
     return {
-      index: 1
+      index: '1'
     };
+  },
+  computed:{
+    ...mapGetters([
+      'sidebar'
+    ]),
+    isCollapse() {
+      return !this.sidebar.opened
+    }
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -122,4 +127,5 @@ export default {
   line-height: 14px;
 }
 // ::v-deep .el-menu-vertical-demo 
+
 </style>

@@ -34,10 +34,21 @@
           </el-table>
         <!-- </div> -->
         <div class="bottom">
+            <el-row  >
+                <el-col :xs="24" :md="8">
+                   <el-button class="bottom-btn" type="primary">下载批量结果</el-button>
+                </el-col>
+                <el-col :xs="24" :md="8">
+                  <el-button class="bottom-btn" type="success">选中前往查询订单</el-button>
+                </el-col>
+                <el-col :xs="24" :md="8">
+                  <el-button class="bottom-btn">查询导入历史</el-button>
+                </el-col>
+            </el-row>
           <div class="right">
-            <el-button type="primary">下载批量结果</el-button>
-            <el-button type="success">选中前往查询订单</el-button>
-            <el-button>查询导入历史</el-button>
+           
+            
+            
           </div>
         </div>
       </el-card>
@@ -191,6 +202,17 @@ export default {
   margin:30px 0;
   .right {
     margin-right: 30px;
+  }
+}
+@media  only screen and (max-width:470px) {
+  .bottom {
+    // .right {
+      .bottom-btn {
+        width: 50%!important;
+        margin: 0 25%!important;
+        margin-bottom: 10px!important;
+      }
+    // }
   }
 }
 </style>

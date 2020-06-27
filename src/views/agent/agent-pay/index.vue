@@ -90,7 +90,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-dialog title="确认收款" :visible.sync="dialogVisible" width="23%" :before-close="handleClose">
+    <el-dialog title="确认收款" :visible.sync="dialogVisible" width="23%" >
       <div>
           <div style="margin-bottom:20px;">
 
@@ -307,8 +307,22 @@ export default {
           status: "3",
           orderNum: "6001683003586476"
         }
-      ]
+      ],
+      screenWidth:document.body.clientWidth
     };
+  },
+  mounted() {
+    const that = this;
+    window.onresize = () => {
+      return (() => {
+        window.screenWidth = document.body.clientWidth;
+        that.screenWidth = window.screenWidth;
+      })();
+    };
+    console.log(this.screenWidth);
+    if(this.screenWidth < 500 ){
+      this.pagesize = 5;
+    }
   },
   methods: {
     renderHeader(h) {
@@ -326,13 +340,6 @@ export default {
     },
     confirm() {
       this.dialogVisible = true;
-    },
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then(_ => {
-          done();
-        })
-        .catch(_ => {});
     }
   }
 };
@@ -366,5 +373,10 @@ export default {
 .footer-left {
     display: flex;
     justify-content: flex-start;
+}
+@media screen and (max-width: 470px) {
+  ::v-deep .el-dialog {
+    width: 100%!important;
+  }
 }
 </style>

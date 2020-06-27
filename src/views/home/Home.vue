@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <el-row type="flex" :gutter="20">
-      <el-col :span="7">
+  <div v-if="data != ''">
+    <el-row :gutter="20" style="padding-top:30px;">
+      <el-col :xs="24" :md="12" :lg="7">
         <el-card shadow="hover" class="mgb20" style="height:475px;">
           <div class="user-info">
             <img :src="data.headImgUrl" class="user-avator" alt />
@@ -32,7 +32,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="5">
+      <el-col :xs="24" :md="12" :lg="5">
         <el-card shadow="hover" :body-style="{padding: '0px'}" style="margin-bottom: 20px;">
           <div class="grid-content">
             <span class="iconImg">
@@ -67,7 +67,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="12">
+      <el-col :xs="24" :md="24" :lg="12">
         <el-card
           shadow="hover"
           :body-style="{padding: '30px'}"
@@ -93,7 +93,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <el-row type="flex" style="background:#fff;margin-bottom:32px;">
+    <el-row style="background:#fff;margin-bottom:32px;padding-left:30px;">
       <el-col :span="24">
         <line-chart :chart-data="lineChartData" />
       </el-col>
@@ -182,7 +182,8 @@ export default {
           address: "5.2更新记录"
         }
       ],
-      currentPage1: 5
+      currentPage1: 5,
+      screenWidth: document.body.clientWidth, // 屏幕宽度
     };
   },
   components: {
@@ -190,7 +191,18 @@ export default {
     LineChart
   },
   mounted() {
+    
+    const that = this;
+    window.onresize = () => {
+      return (() => {
+        window.screenWidth = document.body.clientWidth;
+        that.screenWidth = window.screenWidth;
+      })();
+    };
     this.getdata();
+    if(this.screenWidth < 500 ){
+      this.pagesize = 5;
+    }
   },
   methods: {
     getdata() {

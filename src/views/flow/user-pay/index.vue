@@ -1,9 +1,12 @@
 <template>
   <div>
     <div class="search">
-      <el-input placeholder="订单号/课程名称/账号信息" v-model="searchValue" class="input-with-select">
-      </el-input>
-        <el-button type="primary" icon="el-icon-search" style="background:#257AF6;width:100px;font-size:16px;">搜索</el-button>
+      <el-input placeholder="订单号/课程名称/账号信息" v-model="searchValue" class="input-with-select"></el-input>
+      <el-button
+        type="primary"
+        icon="el-icon-search"
+        style="background:#257AF6;width:100px;font-size:16px;"
+      >搜索</el-button>
     </div>
     <div class="content">
       <el-table
@@ -14,37 +17,44 @@
         <el-table-column prop="order" label="订单号"></el-table-column>
         <el-table-column prop="mark" label="课程名称"></el-table-column>
 
-        <el-table-column prop="before" label="单价" >
+        <el-table-column prop="before" label="单价">
           <template slot-scope="scope">
             <div style="color:#257AF6">￥{{ scope.row.before }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="edit" label="订单金额" >
+        <el-table-column prop="edit" label="订单金额">
           <template slot-scope="scope">
             <div style="color:#257AF6">￥{{ scope.row.edit }}</div>
           </template>
         </el-table-column>
-        <el-table-column prop="time" label="操作时间" ></el-table-column>
-        <el-table-column  label="状态">
+        <el-table-column prop="time" label="操作时间"></el-table-column>
+        <el-table-column label="状态">
           <template slot-scope="scope">
             <div style="color:#36A247;">{{ scope.row.type }}</div>
           </template>
         </el-table-column>
       </el-table>
       <div class="bottom">
-        <div class="bottom-left">
-          <el-pagination
-            background
-            layout="prev, pager, next, total"
-            :total="tableData.length"
-            @current-change="handleCurrentChange"
-            @size-change="handleSizeChange"
-          ></el-pagination>
-        </div>
-        <div class="bottom-right">
-          <span >合计：￥80</span>
-          <el-button style="margin-left:20px;" type="primary">批量付款</el-button>
-        </div>
+        <el-row style="padding-bottom:30px;" >
+          <el-col :xs="24" :md="12" :lg="12">
+            <!-- <div class="bottom-left"> -->
+              <el-pagination
+                background
+                layout="prev, pager, next, total"
+                :total="tableData.length"
+                @current-change="handleCurrentChange"
+                @size-change="handleSizeChange"
+              ></el-pagination>
+            <!-- </div> -->
+          </el-col>
+          <el-col :xs="24" :md="12" :lg="12">
+            <!-- <div class="bottom-right"> -->
+            <div class="right-pay">
+              <span>合计：￥80</span>
+              <el-button style="margin-left:20px;" type="primary">批量付款</el-button>
+            </div>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </div>
@@ -445,6 +455,12 @@ export default {
   background: #fff;
   position: relative;
   height: 680px;
+  .bottom {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
   .bottom-left {
     position: absolute;
     left: 30px;
@@ -454,6 +470,17 @@ export default {
     position: absolute;
     right: 30px;
     bottom: 10px;
+  }
+  .right-pay {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .content {
+    height: 740px;
   }
 }
 </style>

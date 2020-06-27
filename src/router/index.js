@@ -120,6 +120,14 @@ Vue.use(VueRouter)
         meta: {
           title: '流水管理'
         }
+      },
+      {
+        name:'ssls',
+        path: '/index',
+        component: () => import('@/views/index/index'),
+        meta: {
+          title: '流水管理'
+        }
       }
     ]
   }

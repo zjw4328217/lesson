@@ -1,11 +1,15 @@
 <template>
   <div class="content-one">
     <!-- <div class="left">{{title}}</div> -->
-    <el-breadcrumb separator="/">
+    <div class="left">
+
+    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    
+    <el-breadcrumb style="height:30px;line-height:25px;" separator="/">
       <el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>
-      <!-- <el-breadcrumb-item >{{titleParent}}</el-breadcrumb-item> -->
       <el-breadcrumb-item class="title-light">{{title}}</el-breadcrumb-item>
     </el-breadcrumb>
+    </div>
     <div class="right">
       <img src="~@/assets/logo.png" />
       <span></span>
@@ -14,6 +18,8 @@
 </template>
 
 <script>
+import Hamburger from '@/components/Hamburger'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -21,11 +27,24 @@ export default {
       titleParent:''
     };
   },
+  computed: {
+    ...mapGetters([
+      'sidebar'
+    ])
+  },
+  components:{
+    Hamburger
+  },
   mounted() {
     // this.title = this.$route
     console.log(this.$router.history.current);
     this.title =this.$router.history.current.meta.title;
-  }
+  },
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    }
+  },
 };
 </script>
 
@@ -36,10 +55,11 @@ export default {
   height: 60px;
   line-height: 60px;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 .left {
-  width: 100px;
+  // width: 100px;
+  display: flex;
   height: 18px;
   font-size: 18px;
   font-family: MicrosoftYaHei;
@@ -68,4 +88,16 @@ export default {
     color:#257AF6;
   }
 }
+.hamburger-container {
+    // line-height: 46px;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+    transition: background .3s;
+    -webkit-tap-highlight-color:transparent;
+
+    &:hover {
+      background: rgba(0, 0, 0, .025)
+    }
+  }
 </style>

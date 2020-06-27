@@ -3,7 +3,7 @@
     <el-card
       shadow="hover"
       :body-style="{padding: '0'}"
-      style="padding:30px;height:750px;position: relative;"
+      style="padding:30px;height:auto;position: relative;"
     >
       <div class="title">
         <div class="title-top">
@@ -105,7 +105,7 @@ export default {
     line-height: 70px;
   }
   .one {
-    height: 141px;
+    height: auto;
     box-sizing: border-box;
     padding-top: 20px;
     border-bottom: 1px solid #dcdcdc;
@@ -121,6 +121,7 @@ export default {
       }
     }
     .one-content {
+      height: auto;
       padding-left: 60px;
       line-height: 32px;
       margin-bottom: 20px;

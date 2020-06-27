@@ -5,19 +5,18 @@
       <span>{{warning}}</span>
       <span
         style="color:#257AF6;"
-        v-show="form.type == 4 || form.type ==3"
+        v-show="select == 4 || select ==3"
       >下单格式：学校 账号 密码 教材（批量下单时需要填写教材，查询下单不用） 用1个空格隔开</span>
-      <!-- <span style="color:#257AF6;" v-show="form.type == 3">下单格式：学校 账号 密码 教材（批量下单时需要填写教材，查询下单不用） 用1个空格隔开</span> -->
+      <!-- <span style="color:#257AF6;" v-show="select == 3">下单格式：学校 账号 密码 教材（批量下单时需要填写教材，查询下单不用） 用1个空格隔开</span> -->
     </h3>
     <el-col :span="24">
       <div class="select">
         <el-select
           @change="selectOne"
           style="width:100%;margin-bottom:30px;"
-          v-model="form.type"
+          v-model="select"
           placeholder="请下拉选择课程"
           popper-class="select-down"
-          :popper-append-to-body="false"
         >
           <el-option
             v-for="item in options"
@@ -28,9 +27,9 @@
         </el-select>
       </div>
     </el-col>
-    <div class="main" v-if="form.type == 0">
-      <el-row type="flex" justify :gutter="20">
-        <el-col :xs="24" :sm="24" :lg="12">
+    <div class="main" v-if="select == 0">
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="24" :lg="12" style="margin-bottom:30px;">
           <el-card
             shadow="hover"
             :body-style="{padding: '0px'}"
@@ -39,7 +38,7 @@
             <div class="title"></div>
             <div class="bottom">
               <el-switch
-                v-model="form.type"
+                v-model="select"
                 active-color="#ff4949"
                 inactive-color="#409EFF"
                 style="height:100%;line-height:100%"
@@ -65,9 +64,9 @@
         </el-col>
       </el-row>
     </div>
-    <v-run v-else-if="form.type == 1"></v-run>
-    <v-lesson v-else-if="form.type == 3"></v-lesson>
-    <v-uschool v-else-if="form.type == 4"></v-uschool>
+    <v-run v-else-if="select == 1"></v-run>
+    <v-lesson v-else-if="select == 3"></v-lesson>
+    <v-uschool v-else-if="select == 4"></v-uschool>
   </div>
 </template>
 
@@ -78,9 +77,7 @@ import vUschool from "./components/uSchool";
 export default {
   data() {
     return {
-      form: {
-        type: ""
-      },
+      select:'',
       money: 0,
       value: "",
       warning: "注意事项：课程的公告及个性化需要会在此显示。",
@@ -123,9 +120,9 @@ export default {
   },
   methods: {
     selectOne() {
-      console.log(this.form.type);
+      console.log(this.select);
 
-      switch (this.form.type) {
+      switch (this.select) {
         case "1":
           this.warning =
             "代跑时间开始前半小时退出登录，自由跑支持任何位置，室内锻炼无论多少步都只需要下单1KM，绝对匹配规则。";

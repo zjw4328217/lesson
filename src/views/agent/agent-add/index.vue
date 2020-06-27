@@ -249,7 +249,7 @@
         <el-pagination
           class="bottom"
           background
-          layout="prev, pager, next, total"
+          layout="prev, pager, next"
           :page-size="pagesize"
           :total="tableData.length"
           @current-change="handleCurrentChange"
@@ -455,6 +455,9 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    
   },
   methods: {
     renderHeader(h) {

@@ -10,7 +10,7 @@
         <el-card
           shadow="hover"
           :body-style="{padding: '30px'}"
-          style="height:750px;position:relative;"
+          style="height:780px;position:relative;"
         >
           <el-table
             :data="tableData.slice((currpage - 1) * pagesize, currpage * pagesize)"
@@ -87,10 +87,9 @@
     <el-dialog
       :title="data.title"
       :visible.sync="dialogVisible"
-      width="33%"
+      width="37%"
       top='2vh'
       style="margin-top:0;"
-      :before-close="handleClose"
     >
       <div class="dialog" style="margin-top:0;">
         <ul>
@@ -385,7 +384,8 @@ export default {
           status: "2",
           orderNum: "600168300"
         }
-      ]
+      ],
+      screenWidth:document.body.clientWidth
     };
   },
   components: {
@@ -400,6 +400,17 @@ export default {
       { value: 234, name: "余额更新" },
       { value: 135, name: "订单扣款" }
     ];
+    const that = this;
+    window.onresize = () => {
+      return (() => {
+        window.screenWidth = document.body.clientWidth;
+        that.screenWidth = window.screenWidth;
+      })();
+    };
+    console.log(this.screenWidth);
+    if(this.screenWidth < 500 ){
+      this.pagesize = 5;
+    }
   },
   methods: {
     renderHeader(h) {
@@ -420,13 +431,6 @@ export default {
       this.data = data;
       this.data.title = data.indety;
       this.dialogVisible = true;
-    },
-    handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then(_ => {
-          done();
-        })
-        .catch(_ => {});
     },
     handleClick(tab, event) {
       if (tab._props.name == "first") {
@@ -528,5 +532,13 @@ export default {
 }
 .chartOne {
     margin-top: 15px;
+}
+@media screen and (max-width: 470px) {
+  ::v-deep .el-dialog {
+    width: 100%!important;
+  }
+  ::v-deep .is-hover-shadow {
+    height: 470px!important;
+  }
 }
 </style>

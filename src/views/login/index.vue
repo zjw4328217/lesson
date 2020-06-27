@@ -1,18 +1,27 @@
 <template>
   <div>
-    <div class="top">
-      <h1>
-        <img src="~@/assets/logo@2x.png" />
-      </h1>
-      <div class="right">登录</div>
-    </div>
-    <div class="content">
-      <el-col :xs="24" :md="24" lg="12">
+    <!-- <div class="top"> -->
+    <el-row type="flex" style="height:100px;background: rgba(38, 46, 67, 1);">
+      <el-col :span="24" style="display:flex;align-items:center;padding-left:10%;">
+        <div class="h1">
+          <img src="~@/assets/logo@2x.png" />
+        </div>
+        <div class="right">登录</div>
+      </el-col>
+    </el-row>
+
+    <!-- </div> -->
+    <!-- <div class="content"> -->
+      <div class="content1">
+
+      
+    <el-row :gutter="40" style="padding-top:50px;">
+      <el-col :xs="0" :sm="12" :md="12" :lg="12">
         <div class="content-left">
           <img src="~@/assets/login@2x.png" />
         </div>
       </el-col>
-      <el-col :xs="24" :md="24" lg="12">
+      <el-col :xs="24" :sm="12" :md="12" :lg="12">
         <div class="content-right">
           <div class="title">欢迎登录一课一代</div>
           <el-form
@@ -21,7 +30,7 @@
             ref="ruleForm"
             label-width="100px"
             class="demo-ruleForm"
-            style="width:500px;"
+            style="width:100%;"
           >
             <el-form-item style="height:50px;">
               <el-input
@@ -41,11 +50,12 @@
                 size="large"
               ></el-input>
             </el-form-item>
-            <el-form-item inline="true">
+            <el-form-item style="dispaly:flex;" inline="false">
               <el-input
-                style="width:75%;"
+                style="width:70%;"
                 placeholder="验证码"
                 size="large"
+                class="codeIpt"
                 v-model.number="ruleForm.code"
               ></el-input>
               <el-image
@@ -61,7 +71,9 @@
           </el-form>
         </div>
       </el-col>
+    </el-row>
     </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -151,6 +163,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.content1 {
+  width: 100%;
+  overflow: hidden;
+}
 .top {
   display: flex;
   // width: 1920px;
@@ -160,7 +176,7 @@ export default {
   padding-left: 160px;
   padding-top: 27px;
 }
-h1 {
+.h1 {
   width: 200px;
   height: 47px;
   margin-right: 21px;
@@ -181,7 +197,8 @@ h1 {
   border-left: 1px solid rgba(255, 255, 255, 1);
 }
 .content {
-  width: 1236px;
+  // width: 1236px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   height: 616px;
@@ -189,25 +206,27 @@ h1 {
   // padding-left: 100px;
 }
 .content-left {
-  width: 600px;
+  width: 100%;
   height: 513px;
-  margin-right: 61px;
+  padding-left: 10%;
   img {
-    width: 100%;
+    width: 400px;
   }
 }
 .content-right {
   margin-top: 68px;
-  width: 640px;
+  width: 100%;
   height: 444px;
   padding-top: 60px;
   box-sizing: border-box;
+  margin: 0 auto;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   .title {
-    width: 192px;
+    width: 100%;
     height: 24px;
+    text-align: center;
     font-size: 24px;
     font-family: PingFang-SC-Bold, PingFang-SC;
     font-weight: bold;
@@ -217,7 +236,50 @@ h1 {
     margin-bottom: 40px;
   }
 }
-.el-form-item__content {
-  margin: 0;
+::v-deep .el-form-item__content {
+  margin: 0!important;
+  padding:0 20px;
+}
+::v-deep .el-row {
+  padding-right: 0;
+}
+@media only screen and (max-width: 470px) {
+  // .content-left {
+  //   display: none;
+  // }
+  .top {
+    padding-left: 10px;
+    box-sizing: border-box;
+    width: 100vw !important;
+  }
+  ::v-deep .content {
+    // display: block!important;
+    padding: 0;
+    height: auto;
+    .el-form-item__content {
+      margin: 0 10px !important;
+    }
+    .codeIpt {
+      width: 70% !important;
+    }
+  }
+}
+@media (min-width: 1100px) {
+  .content-right {
+      width: 600px!important;
+    }
+  ::v-deep .content {
+    .content-left {
+      width: 600px;
+    }
+    
+    .el-form-item__content {
+      margin: 0 10px !important;
+    }
+    ::v-deep .el-form {
+      box-sizing: border-box !important;
+      padding-right: 30px !important;
+    }
+  }
 }
 </style>

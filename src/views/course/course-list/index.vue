@@ -4,7 +4,10 @@
       <el-col :span="24">
         <div class="top">
           <el-input v-model="input" placeholder="订单号/课程名称/账号信息"></el-input>
-          <el-button type="primary" style="width:100px;height:50px;lien-height:50px;padding:0 10px;">
+          <el-button
+            type="primary"
+            style="width:100px;height:50px;lien-height:50px;padding:0 10px;"
+          >
             <span class="img">
               <img src="~@/assets/search@2x.png" alt />
             </span>
@@ -40,7 +43,11 @@
 
                   <el-table-column prop="editOne" label="操作">
                     <template slot-scope="scope">
-                      <el-button size="mini" style="border:1px solid rgba(37,122,246,1);color:#257AF6;border-radius:15px;height:30px;" @click="handleEditOne(scope.$index, scope.row)">进度跟踪</el-button>
+                      <el-button
+                        size="mini"
+                        style="border:1px solid rgba(37,122,246,1);color:#257AF6;border-radius:15px;height:30px;"
+                        @click="handleEditOne(scope.$index, scope.row)"
+                      >进度跟踪</el-button>
                     </template>
                   </el-table-column>
                 </el-table>
@@ -61,7 +68,11 @@
             </el-table-column>
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button style="border-radius:15px;" type="primary" @click="handleEdit(scope.$index, scope.row)">一键冲刷</el-button>
+                <el-button
+                  style="border-radius:15px;"
+                  type="primary"
+                  @click="handleEdit(scope.$index, scope.row)"
+                >一键冲刷</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -69,8 +80,7 @@
             title="进度跟踪"
             :visible.sync="dialogVisible"
             width="30%"
-            :before-close="handleClose"
-            custom-class='dialog-one'
+            custom-class="dialog-one"
           >
             <el-timeline>
               <el-timeline-item
@@ -81,8 +91,8 @@
                 :color="activity.color"
                 :size="activity.size"
               >
-              <div v-if="index >= 1">{{activity.timestamp}}&nbsp;{{activity.content}}</div>
-              <div v-else style="color:#36A247;">{{activity.timestamp}}&nbsp;{{activity.content}}</div>
+                <div v-if="index >= 1">{{activity.timestamp}}&nbsp;{{activity.content}}</div>
+                <div v-else style="color:#36A247;">{{activity.timestamp}}&nbsp;{{activity.content}}</div>
               </el-timeline-item>
             </el-timeline>
           </el-dialog>
@@ -183,7 +193,7 @@ export default {
           ]
         }
       ],
-      input:'',
+      input: "",
       activities: [
         {
           content: "订单完成",
@@ -220,20 +230,16 @@ export default {
       ]
     };
   },
+  mounted() {
+    
+  },
   methods: {
     handleEdit(index, row) {
       console.log(index, row);
     },
     handleEditOne(index, row) {
       this.dialogVisible = true;
-    },
-     handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
-      }
+    }
   }
 };
 </script>
@@ -266,11 +272,16 @@ export default {
   height: 50px;
 }
 ::v-deep .dialog-one {
-  .el-dialog__body{
+  .el-dialog__body {
     margin-right: 20px;
     padding-bottom: 20px;
-  height: 200px!important;
-  overflow-x: hidden;
+    height: 200px !important;
+    overflow-x: hidden;
+  }
+}
+@media screen and (max-width: 470px) {
+  ::v-deep .el-dialog {
+    width: 100% !important;
   }
 }
 </style>

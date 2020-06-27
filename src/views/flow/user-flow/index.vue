@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="top">
-      <!-- <el-row type="flex">
-      <el-col :md="24" :lg="8">-->
+    <!-- <div class="top"> -->
+      <el-row>
+      <el-col :xs="20" :md="8">
       <div class="left">
         <span>流水类型</span>
         <el-select v-model="flowType" placeholder="流水类型">
@@ -13,10 +13,10 @@
             :key="item.value"
           ></el-option>
         </el-select>
-        <!-- </el-col> -->
       </div>
+        </el-col>
+        <el-col :xs="20" :md="8">
       <div class="middle">
-        <!-- <el-col :md="24" :lg="8"> -->
 
         <span>流水单号</span>
         <el-select v-model="flowOrder" placeholder="流水单号">
@@ -27,10 +27,10 @@
             :key="item.value"
           ></el-option>
         </el-select>
-        <!-- </el-col> -->
       </div>
+        </el-col>
+        <el-col :xs="20" :md="8">
       <div class="right">
-        <!-- <el-col :md="24" :lg="8"> -->
         <span>流水时间</span>
         <el-date-picker
           v-model="value1"
@@ -40,14 +40,15 @@
           end-placeholder="结束日期"
         ></el-date-picker>
         <el-button
+          class="searchbtn"
           type="primary"
           style="height:50px;width:100px;margin-left:20px;font-size:16px;"
           icon="el-icon-search"
         >查询</el-button>
-        <!-- </el-col> -->
       </div>
-      <!-- </el-row> -->
-    </div>
+        </el-col>
+      </el-row>
+    <!-- </div> -->
     <div class="content">
       <el-table
         :data="tableData.slice((currpage - 1) * pagesize, currpage * pagesize)"
@@ -75,7 +76,7 @@
       <el-pagination
         class="bottom"
         background
-        layout="prev, pager, next, total"
+        layout="prev, pager, next"
         :total="tableData.length"
         @current-change="handleCurrentChange"
         @size-change="handleSizeChange"
@@ -490,6 +491,22 @@ export default {
     td {
       padding: 0 !important;
     }
+  }
+}
+@media only screen and (max-width: 470px) {
+  ::v-deep .el-main {
+    padding:0!important;
+  }
+  ::v-deep .el-date-editor {
+    width: 100%;
+  }
+  ::v-deep .searchbtn {
+    margin-left: 0!important;
+  }
+  .top {
+    width: 100%;
+    padding-top: 20px;
+    height: 250px!important;
   }
 }
 </style>
