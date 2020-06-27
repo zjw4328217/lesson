@@ -12,7 +12,7 @@
         text-color="#ffffff"
         router
       >
-        <el-menu-item index="1">
+        <el-menu-item index="home">
           <template slot="title">
             <!-- <i class="el-icon-location"></i> -->
             <img class="iconImg" src="~@/assets/index@2x.png" alt />

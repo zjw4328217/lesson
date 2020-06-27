@@ -7,3 +7,8 @@
 <style>
   @import "../static/css/main.css";
 </style>
+<style >
+  li {
+    list-style: none;
+  }
+</style>

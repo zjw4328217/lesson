@@ -8,7 +8,7 @@
             <el-header>
                 <v-head></v-head>
             </el-header>
-            <el-main>
+            <el-main style="background:rgba(245,245,245,1);">
                 <keep-alive>
                     <router-view></router-view>
                 </keep-alive>

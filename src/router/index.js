@@ -38,7 +38,7 @@ Vue.use(VueRouter)
         path: '/course-order',
         component: () => import('@/views/course/course-order/index'),
         meta: {
-          title: '查询订单'
+          title: '批量订单'
         }
       },
       {
@@ -46,7 +46,7 @@ Vue.use(VueRouter)
         path: '/course-list',
         component: () => import('@/views/course/course-list/index'),
         meta: {
-          title: '查询订单'
+          title: '订单列表'
         }
       },
       {
@@ -54,7 +54,15 @@ Vue.use(VueRouter)
         path: '/course-task',
         component: () => import('@/views/course/course-task/index'),
         meta: {
-          title: '查询订单'
+          title: '批量结果'
+        }
+      },
+      {
+        name:'course-detail',
+        path: '/course-detail',
+        component: () => import('@/views/course/course-task/detail'),
+        meta: {
+          title: '批量结果详情'
         }
       }
     ]
