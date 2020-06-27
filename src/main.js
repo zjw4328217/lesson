@@ -10,6 +10,19 @@ import axios from 'axios'
 Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
+
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
 new Vue({
   router,
   store,

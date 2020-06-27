@@ -27,9 +27,9 @@
         </el-table-column>
       </el-table>
       <el-pagination
+        class="bottom"
         background
-        layout="prev, pager, next, sizes, total, jumper"
-        :page-sizes="[5, 10, 15, 20]"
+        layout="prev, pager, next, total"
         :page-size="pagesize"
         :total="tableData.length"
         @current-change="handleCurrentChange"
@@ -189,5 +189,12 @@ export default {
 <style lang="scss" scoped>
 .content {
   width: 100%;
+  padding: 30px 0;
+  // position: relative;
+}
+.bottom {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
 }
 </style>

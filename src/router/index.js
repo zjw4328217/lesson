@@ -64,6 +64,70 @@ Vue.use(VueRouter)
         meta: {
           title: '批量结果详情'
         }
+      },
+      {
+        name:'agent-pay',
+        path: '/agent-pay',
+        component: () => import('@/views/agent/agent-pay/index'),
+        meta: {
+          title: '代理充值'
+        }
+      },
+      {
+        name:'agent-list',
+        path: '/agent-list',
+        component: () => import('@/views/agent/agent-list/index'),
+        meta: {
+          title: '代理列表'
+        }
+      },
+      {
+        name:'agent-add',
+        path: '/agent-add',
+        component: () => import('@/views/agent/agent-add/index'),
+        meta: {
+          title: '新增代理'
+        }
+      },
+      {
+        name:'user-flow',
+        path: '/user-flow',
+        component: () => import('@/views/flow/user-flow/index'),
+        meta: {
+          title: '流水管理'
+        }
+      },
+      {
+        name:'user-pay',
+        path: '/user-pay',
+        component: () => import('@/views/flow/user-pay/index'),
+        meta: {
+          title: '流水管理'
+        }
+      },
+      {
+        name:'complaints-add',
+        path: '/complaints-add',
+        component: () => import('@/views/complaints/complaints-add/index'),
+        meta: {
+          title: '流水管理'
+        }
+      },
+      {
+        name:'complaints-details',
+        path: '/complaints-details',
+        component: () => import('@/views/complaints/complaints-details/index'),
+        meta: {
+          title: '流水管理'
+        }
+      },
+      {
+        name:'ssls',
+        path: '/index',
+        component: () => import('@/views/index/index'),
+        meta: {
+          title: '流水管理'
+        }
       }
     ]
   }

@@ -1,9 +1,16 @@
 <template>
   <div>
+<<<<<<< HEAD
     <el-col :span="23">
       <div class="top">正确</div>
     </el-col>
     <el-col :span="23">
+=======
+    <el-col :span="24">
+      <div class="top">正确</div>
+    </el-col>
+    <el-col :span="24">
+>>>>>>> 832657389de5db9fa5b8a12c7909dfd56c0f9ebe
       <el-card shadow="hover" :body-style="{padding: '0px'}">
         <div class="title">
           <span class="first">系统处理完毕，</span>
@@ -12,12 +19,12 @@
           <span class="third">8</span>
           <span class="first">单安排失败！</span>
         </div>
-        <div class="content">
+        <!-- <div class="content"> -->
           <el-table
             :data="tableData"
             style="width: 100%"
           >
-            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column type="selection" width="55" style="padding-left:5px;"></el-table-column>
             <el-table-column type="index" width="50"></el-table-column>
             <el-table-column prop="lessonName" label="教程名称"></el-table-column>
             <el-table-column prop="msg" label="导入信息"></el-table-column>
@@ -32,12 +39,23 @@
             </el-table-column>
             <el-table-column prop="time" label="处理时间"></el-table-column>
           </el-table>
-        </div>
+        <!-- </div> -->
         <div class="bottom">
+            <el-row  >
+                <el-col :xs="24" :md="8">
+                   <el-button class="bottom-btn" type="primary">下载批量结果</el-button>
+                </el-col>
+                <el-col :xs="24" :md="8">
+                  <el-button class="bottom-btn" type="success">选中前往查询订单</el-button>
+                </el-col>
+                <el-col :xs="24" :md="8">
+                  <el-button class="bottom-btn">查询导入历史</el-button>
+                </el-col>
+            </el-row>
           <div class="right">
-            <el-button type="primary">下载批量结果</el-button>
-            <el-button type="success">选中前往查询订单</el-button>
-            <el-button>查询导入历史</el-button>
+           
+            
+            
           </div>
         </div>
       </el-card>
@@ -171,10 +189,10 @@ export default {
   margin-bottom: 30px;
 }
 .title {
-  height: 100px;
-  line-height: 100px;
+  height: 60px;
+  line-height: 60px;
   padding-left: 20px;
-  margin-bottom: 30px;
+  // margin-bottom: 10px;
   .first {
     color: #333333;
   }
@@ -188,9 +206,20 @@ export default {
 .bottom {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 30px;
+  margin:30px 0;
   .right {
     margin-right: 30px;
+  }
+}
+@media  only screen and (max-width:470px) {
+  .bottom {
+    // .right {
+      .bottom-btn {
+        width: 50%!important;
+        margin: 0 25%!important;
+        margin-bottom: 10px!important;
+      }
+    // }
   }
 }
 </style>

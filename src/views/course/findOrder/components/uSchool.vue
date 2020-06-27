@@ -2,7 +2,7 @@
   <div>
     <el-row :gutter="30">
       <el-col :span="12">
-        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:800px">
+        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:693px">
           <div class="title">请填写《U校园》下单信息</div>
           <div class="content">
             <ul>
@@ -13,12 +13,17 @@
               </li>
             </ul>
           </div>
+          <div class="desc">
+            <span class="first">您已输入</span>
+            <span class="second">2</span>
+            <span class="first">个账号,其中有效账号</span>
+            <span class="third">2</span>
+            <span class="first">个,无效账号</span>
+            <span class="four">0</span>
+            <span>个</span>
+          </div>
           <div class="bottom">
             <div class="bottom-left">
-              <el-radio v-model="radio" label="1">整册代刷</el-radio>
-              <el-radio v-model="radio" label="2">单元代刷</el-radio>
-            </div>
-            <div class="bottom-right">
               <el-switch
                 v-model="value1"
                 active-color="#ff4949"
@@ -28,27 +33,91 @@
                 inactive-text="普通代刷"
               ></el-switch>
             </div>
+            <div class="bottom-right">
+              <el-button type="primary">加载课程</el-button>
+            </div>
           </div>
-          <div class="desc">您已输入 1个账号，其中有效账号 1个，</div>
-          <div class="bottombtn">
-            <el-button type="primary">加载课程</el-button>
-          </div>
+
+          <!-- <div class="bottombtn">
+            
+          </div>-->
         </el-card>
       </el-col>
       <el-col :span="12">
-        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:800px">
+        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:693px">
           <div class="title">
             <span>课程信息</span>
           </div>
-          <div class="content">
-            <el-tree
-              :data="data"
-              show-checkbox
-              node-key="id"
-              :default-expanded-keys="[2, 3]"
-              :default-checked-keys="[5]"
-              :props="defaultProps"
-            ></el-tree>
+          <div class="content1 content">
+            <ul>
+              <li>
+                <div class="li-left">
+                  <span style="color:#333">第</span>
+                  <span style="color:#257AF6">1</span>
+                  <span style="color:#333">个账号：17853621797</span>
+                </div>
+                <div class="li-right">
+                  <span style="color:#36A247">查询成功</span>
+                  <span>
+                    <img src="~@/assets/rightarrow.png" />
+                  </span>
+                </div>
+              </li>
+              <li style="border-bottom:0;">
+                <div class="li-left">
+                  <span style="color:#333">第</span>
+                  <span style="color:#257AF6">2</span>
+                  <span style="color:#333">个账号：17853621797</span>
+                </div>
+                <div class="li-right">
+                  <span style="color:#36A247">查询成功</span>
+                  <span>
+                    <img src="~@/assets/rightarrow.png" />
+                  </span>
+                </div>
+              </li>
+              <el-table
+                ref="multipleTable"
+                :data="tableData"
+                tooltip-effect="dark"
+                style="width: 100%"
+                @selection-change="handleSelectionChange"
+              >
+                <el-table-column type="selection" width="55"></el-table-column>
+                <el-table-column label="课程名称" width="120">
+                  <template slot-scope="scope">{{ scope.row.name }}</template>
+                </el-table-column>
+                <el-table-column label="当前单元" width="120">
+                  <template slot-scope="scope">
+                    <el-select :disabled='scope.row.nowStatus' v-model="scope.row.now" placeholder="词汇篇">
+                      <el-option
+                        v-for="item in scope.row.begin"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      ></el-option>
+                    </el-select>
+                  </template>
+                </el-table-column>
+                <el-table-column label="目标单元" show-overflow-tooltip>
+                  <template slot-scope="scope">
+                    <el-select :disabled='scope.row.endStatus' v-model="scope.row.target" placeholder="语法篇">
+                      <el-option
+                        v-for="item in scope.row.end"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      ></el-option>
+                    </el-select>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="all" label="整册代刷" show-overflow-tooltip>
+                  <template>
+                    <el-checkbox v-model="checked">整册代刷</el-checkbox>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </ul>
           </div>
           <div class="bottomRight">
             <div class="left">合计：￥{{money}}</div>
@@ -65,76 +134,7 @@ export default {
   data() {
     return {
       money: "0",
-      data: [
-        {
-          id: 1,
-          label: "郑州航空工业管理学院 15288887046 NBLYXooo0422",
-          children: [
-            {
-              id: 4,
-              label: "新世界交互英语听说1",
-              children: [
-                {
-                  id: 9,
-                  label: "Unit1 MovingForward（44%）"
-                },
-                {
-                  id: 10,
-                  label: "Unit2 Lifestyles（56%）"
-                },
-                {
-                  id: 11,
-                  label: "Unit3 Lifestyles（56%）"
-                },
-                {
-                  id: 12,
-                  label: "Unit4 Lifestyles（56%）"
-                },
-                {
-                  id: 13,
-                  label: "Unit5 Lifestyles（56%）"
-                }
-              ]
-            },
-            {
-              id: 5,
-              label: "新世界交互英语听说2",
-              children: [
-                {
-                  id: 9,
-                  label: "Unit1 MovingForward（44%）"
-                },
-                {
-                  id: 10,
-                  label: "Unit2 Lifestyles（56%）"
-                },
-                {
-                  id: 11,
-                  label: "Unit3 Lifestyles（56%）"
-                },
-                {
-                  id: 12,
-                  label: "Unit4 Lifestyles（56%）"
-                },
-                {
-                  id: 13,
-                  label: "Unit5 Lifestyles（56%）"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          id: 2,
-          label: "中南林业科技大学 13196304048	hmx232425",
-          children: [
-            {
-              id: 5,
-              label: "二级 2-1"
-            }
-          ]
-        }
-      ],
+      value1: false,
       defaultProps: {
         children: "children",
         label: "label"
@@ -156,7 +156,51 @@ export default {
           password: "dasd52255"
         }
       ],
-      radio: "1"
+      radio: "1",
+      tableData: [
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          now: "区金沙江路 1518 弄",
+          target: '金沙2城',
+          endStatus:true,
+          nowStatus:true
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          now: "区金沙江路 1518 弄",
+          target: '金沙城11',
+          endStatus:true,
+          nowStatus:true,
+
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          now: "区金沙江路 1518 弄",
+          target: '金沙城',
+          endStatus:true,
+          nowStatus:true
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          now: "区金沙江 弄",
+          target: '金沙城',
+          endStatus:false,
+          nowStatus:false
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          now: "区金沙江路 1518 弄",
+          target: '金沙城',
+          endStatus:false,
+          nowStatus:false,
+          
+        }
+      ]
     };
   }
 };
@@ -164,11 +208,11 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-  height: 76px;
+  height: 56px;
   font-size: 16px;
   font-family: MicrosoftYaHei;
   color: rgba(51, 51, 51, 1);
-  line-height: 76px;
+  line-height: 56px;
   padding-left: 30px;
   border-bottom: 1px solid #ebeef5;
   display: flex;
@@ -176,7 +220,7 @@ export default {
 }
 .content {
   margin: 30px;
-  padding: 30px;
+  padding: 30px 0 0 30px;
   height: 510px;
   box-sizing: border-box;
   border: 1px solid #ebeef5;
@@ -187,11 +231,11 @@ export default {
 }
 .bottom {
   padding: 0 30px;
-  height: 60px;
+  // height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-top: 5px;
 }
 .desc {
   padding-left: 30px;
@@ -211,7 +255,38 @@ export default {
   padding: 15px 30px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+}
+.first {
+  color: #666;
+}
+.second {
+  color: #257af6;
+}
+.third {
+  color: #36a247;
+}
+.four {
+  color: #9b9b9b;
+}
+.content1 {
+  padding-top: 0;
+  li {
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ebeef5;
+    img {
+      width: 8px;
+      height: 12px;
+      margin-left: 9px;
+      margin-right: 30px;
+    }
+  }
+}
+.left {
+  margin-right: 10px;
 }
 </style>

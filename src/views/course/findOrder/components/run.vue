@@ -31,11 +31,11 @@
         </el-card>
       </el-col>
       <el-col :span="24">
-        <el-card shadow="hover" :body-style="{padding: '0px'}" style="height:542px;">
-          <div class="title">
+        <el-card shadow="hover" :body-style="{padding: '30px'}" style="height:542px;">
+          <div class="title" style="padding-left:0;">
             <span>跑步起点配置</span>
             <el-input
-              style="width:130px;margin-right:30px;"
+              style="width:130px;"
               v-model="beginlocal"
               placeholder="请输入起跑地点"
             ></el-input>
@@ -72,11 +72,12 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-  height: 76px;
+  height: 47px;
+  line-height: 47px;
   font-size: 16px;
   font-family: MicrosoftYaHei;
   color: rgba(51, 51, 51, 1);
-  line-height: 76px;
+  // line-height: 56px;
   padding-left: 30px;
   border-bottom: 1px solid #ebeef5;
   display: flex;
@@ -86,19 +87,18 @@ export default {
   padding: 0 30px;
   //   width: 1560px;
   margin: 30px 20px 30px 30px;
-  height: 420px;
+  height: 450px;
   box-sizing: border-box;
   border-radius: 6px;
   border: 1px solid rgba(220, 220, 220, 1);
   .form-title {
-    height: 76px;
-    line-height: 76px;
+    height: 56px;
+    line-height: 56px;
     // padding-left: 30px;
     border-bottom: 1px solid #ebeef5;
   }
 }
 .content {
-  width: 100%;
   height: 350px;
   background: skyblue;
   margin-bottom: 30px;
