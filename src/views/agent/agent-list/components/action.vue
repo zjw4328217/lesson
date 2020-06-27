@@ -6,7 +6,6 @@
 import echarts from "echarts";
 require("echarts/theme/macarons"); // echarts theme
 import resize from "@/utils/resize";
-
 export default {
   mixins: [resize],
   props: {
@@ -16,7 +15,7 @@ export default {
     },
     width: {
       type: String,
-      default: "450px"
+      default: "400px"
     },
     height: {
       type: String,
@@ -70,7 +69,7 @@ export default {
           data: ["订单数量", "订单金额", "下级发展"]
         },
         grid: {
-          left: "3%",
+          left: "0%",
           right: "4%",
           bottom: "3%",
           containLabel: true

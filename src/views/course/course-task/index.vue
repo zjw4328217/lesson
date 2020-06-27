@@ -197,4 +197,9 @@ export default {
   left: 30px;
   bottom: 30px;
 }
+@media screen and (max-width:470px ){
+  .content {
+    height:400px;
+  }
+}
 </style>

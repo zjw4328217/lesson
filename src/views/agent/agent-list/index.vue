@@ -150,7 +150,7 @@
                 <el-button icon="el-icon-search" circle></el-button>
               </div>
               <div class="chartOne">
-                  <v-action v-show="activeName == 'third'" :chart-data="actionData"></v-action>
+                  <v-action :width='width' v-show="activeName == 'third'" :chart-data="actionData"></v-action>
               </div>
             </div>
           </el-tab-pane>
@@ -385,7 +385,9 @@ export default {
           orderNum: "600168300"
         }
       ],
-      screenWidth:document.body.clientWidth
+      screenWidth:document.body.clientWidth,
+      width:'400px'
+
     };
   },
   components: {
@@ -410,6 +412,7 @@ export default {
     console.log(this.screenWidth);
     if(this.screenWidth < 500 ){
       this.pagesize = 5;
+       this.width = '300px'
     }
   },
   methods: {

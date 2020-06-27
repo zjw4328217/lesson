@@ -1,7 +1,11 @@
 <template>
   <div>
     <el-container>
-      <el-aside :class="!isCollapse?'sideleft':'sidelittle'" style="background:#262e43;min-height:100vh;">
+      <div v-if="device==='mobile'&& sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+      <el-aside v-if="device==='mobile' && !sidebar.opened" :class="!sidebar.opened ?'sidelittle':'sideleft'" style="background:#262e43;min-height:100vh;">
+        <v-sidebar></v-sidebar>
+      </el-aside>
+      <el-aside v-else :class="!sidebar.opened ?'sidelittle1':'sideleft'" style="background:#262e43;min-height:100vh;">
         <v-sidebar></v-sidebar>
       </el-aside>
       <el-container>
@@ -21,25 +25,57 @@
 <script>
 import vHead from "./Header.vue";
 import vSidebar from "./Sidebar.vue";
-import { mapGetters } from "vuex";
+import { mapGetters ,mapState} from "vuex";
+import ResizeMixin from './mixin/ResizeHandler'
 export default {
   data() {
     return {};
   },
+  mixins: [ResizeMixin],
   computed: {
-    ...mapGetters(["sidebar"]),
-    isCollapse() {
-      return !this.sidebar.opened;
+    ...mapState({
+      sidebar: state => state.app.sidebar,
+      device: state => state.app.device
+    }),
+    // ...mapGetters(["sidebar"]),
+    // isCollapse() {
+    //   return !this.sidebar.opened;
+    // },
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === 'mobile'
+      }
     }
+  },
+  mounted()  {
+    console.log(this.device==='mobile' && !this.sidebar.opened);
+    
   },
   components: {
     vHead,
     vSidebar
-  }
+  },
+  methods: {
+    handleClickOutside() {
+      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+    }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+ .drawer-bg {
+    background: #000;
+    opacity: 0.3;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+  }
 .sideleft {
   width: 250px!important;
   display: block;
@@ -47,6 +83,10 @@ export default {
 .sidelittle {
   // width: auto!important;
   display: none;
+
+}
+.sidelittle1 {
+  width: auto!important;
 
 }
 @media only screen and (max-width: 470px) {

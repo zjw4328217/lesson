@@ -1,16 +1,9 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <el-col :span="23">
-      <div class="top">正确</div>
-    </el-col>
-    <el-col :span="23">
-=======
     <el-col :span="24">
       <div class="top">正确</div>
     </el-col>
     <el-col :span="24">
->>>>>>> 832657389de5db9fa5b8a12c7909dfd56c0f9ebe
       <el-card shadow="hover" :body-style="{padding: '0px'}">
         <div class="title">
           <span class="first">系统处理完毕，</span>
@@ -20,43 +13,36 @@
           <span class="first">单安排失败！</span>
         </div>
         <!-- <div class="content"> -->
-          <el-table
-            :data="tableData"
-            style="width: 100%"
-          >
-            <el-table-column type="selection" width="55" style="padding-left:5px;"></el-table-column>
-            <el-table-column type="index" width="50"></el-table-column>
-            <el-table-column prop="lessonName" label="教程名称"></el-table-column>
-            <el-table-column prop="msg" label="导入信息"></el-table-column>
-            <el-table-column prop="buyed" label="已下单的课程"></el-table-column>
-            <el-table-column prop="neverBuy" label="未下单的课程"></el-table-column>
-            <el-table-column prop="res" label="处理结果">
-              <template slot-scope="scope">
-                <div style="color:#36A247" v-show="scope.row.tag == 1">{{ scope.row.res }}</div>
-                <div style="color:#666" v-show="scope.row.tag == 2">{{ scope.row.res }}</div>
-                <div style="color:#F5A623" v-show="scope.row.tag == 3">{{ scope.row.res }}</div>
-              </template>
-            </el-table-column>
-            <el-table-column prop="time" label="处理时间"></el-table-column>
-          </el-table>
+        <el-table :data="tableData" style="width: 100%">
+          <el-table-column type="selection" width="55" style="padding-left:5px;"></el-table-column>
+          <el-table-column type="index" width="50"></el-table-column>
+          <el-table-column prop="lessonName" label="教程名称"></el-table-column>
+          <el-table-column prop="msg" label="导入信息"></el-table-column>
+          <el-table-column prop="buyed" label="已下单的课程"></el-table-column>
+          <el-table-column prop="neverBuy" label="未下单的课程"></el-table-column>
+          <el-table-column prop="res" label="处理结果">
+            <template slot-scope="scope">
+              <div style="color:#36A247" v-show="scope.row.tag == 1">{{ scope.row.res }}</div>
+              <div style="color:#666" v-show="scope.row.tag == 2">{{ scope.row.res }}</div>
+              <div style="color:#F5A623" v-show="scope.row.tag == 3">{{ scope.row.res }}</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="time" label="处理时间"></el-table-column>
+        </el-table>
         <!-- </div> -->
         <div class="bottom">
-            <el-row  >
-                <el-col :xs="24" :md="8">
-                   <el-button class="bottom-btn" type="primary">下载批量结果</el-button>
-                </el-col>
-                <el-col :xs="24" :md="8">
-                  <el-button class="bottom-btn" type="success">选中前往查询订单</el-button>
-                </el-col>
-                <el-col :xs="24" :md="8">
-                  <el-button class="bottom-btn">查询导入历史</el-button>
-                </el-col>
-            </el-row>
-          <div class="right">
-           
-            
-            
-          </div>
+          <el-row :gutter='30'>
+            <el-col :xs="24" :md="7">
+              <el-button class="bottom-btn" type="primary">下载批量结果</el-button>
+            </el-col>
+            <el-col :xs="24" :md="8">
+              <el-button class="bottom-btn" type="success">选中前往查询订单</el-button>
+            </el-col>
+            <el-col :xs="24" :md="7">
+              <el-button class="bottom-btn">查询导入历史</el-button>
+            </el-col>
+          </el-row>
+          <div class="right"></div>
         </div>
       </el-card>
     </el-col>
@@ -182,11 +168,11 @@ export default {
   height: 50px;
   background: #fff;
   line-height: 50px;
+  margin: 30px 0;
   padding-left: 10px;
   font-size: 16px;
   font-family: MicrosoftYaHei;
   color: rgba(102, 102, 102, 1);
-  margin-bottom: 30px;
 }
 .title {
   height: 60px;
@@ -206,19 +192,19 @@ export default {
 .bottom {
   display: flex;
   justify-content: flex-end;
-  margin:30px 0;
+  margin: 30px 0;
   .right {
     margin-right: 30px;
   }
 }
-@media  only screen and (max-width:470px) {
+@media only screen and (max-width: 470px) {
   .bottom {
     // .right {
-      .bottom-btn {
-        width: 50%!important;
-        margin: 0 25%!important;
-        margin-bottom: 10px!important;
-      }
+    .bottom-btn {
+      width: 50% !important;
+      margin: 0 25% !important;
+      margin-bottom: 10px !important;
+    }
     // }
   }
 }

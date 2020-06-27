@@ -37,7 +37,6 @@ export default {
   },
   mounted() {
     // this.title = this.$route
-    console.log(this.$router.history.current);
     this.title =this.$router.history.current.meta.title;
   },
   methods: {

@@ -17,7 +17,7 @@
       </el-col>
     </el-row>
     <el-row type="flex" justify>
-      <el-col :span="24">
+      <el-col :span="24" :gutter='20'> 
         <div>
           <el-table
             :data="tableData"
@@ -39,7 +39,7 @@
                   <el-table-column prop="taskEnd" label="考试结束"></el-table-column>
                   <el-table-column prop="count" label="分数"></el-table-column>
                   <el-table-column prop="count" label="状态"></el-table-column>
-                  <el-table-column prop="count" label="操作"></el-table-column>
+                  <el-table-column prop="count" label="操作" width='150'></el-table-column>
 
                   <el-table-column prop="editOne" label="操作">
                     <template slot-scope="scope">

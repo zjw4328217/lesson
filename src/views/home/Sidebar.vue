@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { mapGetters} from 'vuex';
+import { mapGetters,mapState} from 'vuex';
 export default {
   data() {
     return {
@@ -79,6 +79,9 @@ export default {
     };
   },
   computed:{
+    ...mapState({
+      device: state => state.app.device
+    }),
     ...mapGetters([
       'sidebar'
     ]),

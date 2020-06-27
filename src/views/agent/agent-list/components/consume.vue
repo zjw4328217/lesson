@@ -69,7 +69,7 @@ export default {
         },
         legend: {
           orient: "vertical",
-          right: 30,
+          left: 10,
           itemWidth: 8, // 设置宽度
           itemHeight: 8, // 设置高度
           icon: "circle",
